@@ -30,6 +30,7 @@ a:hover {
 
 /* Header */
 header {
+    position: relative;
     background-color: var(--blue);
     color: #fff;
     padding: 1rem 0;
@@ -52,6 +53,52 @@ nav {
 nav a {
     color: #fff;
     font-weight: bold;
+}
+
+/* Hide nav links by default on smaller screens */
+.nav-menu {
+    display: none;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    color: #fff;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* Larger screens show nav inline and hide toggle button */
+@media (min-width: 768px) {
+    .nav-menu {
+        display: flex;
+        gap: 1.5rem;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .menu-toggle {
+        display: none;
+    }
+}
+
+/* Small screens show toggle button and hide/show nav based on active class */
+@media (max-width: 767px) {
+    .menu-toggle {
+        display: block;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
 }
 
 /* Main Content Styling */

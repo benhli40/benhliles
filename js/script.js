@@ -67,3 +67,13 @@ document.addEventListener("DOMContentLoaded", function() {
         })
         .catch(error => console.error('Error loading testimonials:', error));
 });
+
+// JavaScript for collapsible mobile menu
+document.addEventListener('DOMContentLoaded', () => {
+    const toggleButton = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+
+    toggleButton.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+    });
+});
