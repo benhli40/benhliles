@@ -1,0 +1,12 @@
+[
+    { 
+        "client": "John Doe", 
+        "comment": "Outstanding service and dedication!",
+        "photo": "./images/john_doe.jpg"  
+    },
+    { 
+        "client": "Jane Smith", 
+        "comment": "A truly personalized experience!", 
+        "photo": "./images/jane_smith.jpg" 
+    }
+]

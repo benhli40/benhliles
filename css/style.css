@@ -1,0 +1,302 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Color Scheme */
+:root {
+    --blue: #1E3A8A; /* Deep web-safe blue */
+    --grey-silver: #D1D5DB; /* Silver-grey color */
+}
+
+/* General Styles */
+body {
+    background-color: #f8f9fa; /* Light background */
+    color: var(--blue);
+    line-height: 1.6;
+}
+
+a {
+    color: var(--blue);
+    text-decoration: none;
+}
+
+a:hover {
+    color: #cfbbbbc7; /* Slightly darker grey for hover */
+}
+
+/* Header */
+header {
+    background-color: var(--blue);
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2rem;
+}
+
+/* Navigation */
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+nav a {
+    color: #fff;
+    font-weight: bold;
+}
+
+/* Main Content Styling */
+main {
+    padding: 2rem;
+}
+
+/* Page Container for Main Sections */
+.pages {
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 1.5rem;
+    max-width: 800px;
+    margin: 1rem auto;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Spacing Between Sections */
+.pages section {
+    margin-bottom: 2.5rem; /* Adds space between sections */
+}
+
+/* Button Styling with Enhanced Spacing */
+.button {
+    display: inline-block;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem; /* Adds extra space below each button */
+    padding: 0.5rem 1rem;
+    background-color: var(--blue);
+    color: #fff;
+    text-align: center;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.button:hover {
+    background-color: #374151; /* Darker blue-grey on hover */
+}
+
+/* Skills Section */
+#skills {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.skill {
+    flex: 1 1 45%;
+    padding: 0.5rem;
+    background-color: var(--grey-silver);
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* Projects Section */
+#projects {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.projects-list {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    margin-top: 1rem;
+}
+
+.project-item {
+    background-color: #ffffff;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 100%;
+    text-align: left;
+}
+
+.project-item h3 {
+    font-size: 1.25rem;
+    color: var(--blue);
+    margin-bottom: 0.5rem;
+}
+
+.project-item p {
+    color: #555;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.project-item a {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 0.5rem;
+    display: inline-block;
+}
+
+.project-item a:hover {
+    color: #374151;
+}
+
+
+.testimonial {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+#testimonial h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1.5rem; /* Adjust the space as needed */
+}
+
+.testimonial-photo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 1rem;
+    object-fit: cover;
+    flex-shrink: 0; /* Prevents photo from shrinking if space is tight */
+}
+
+.testimonial-text {
+    max-width: 400px;
+    display: inline-block;
+}
+
+
+/* Footer */
+footer {
+    background-color: var(--grey-silver);
+    color: #333;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+}
+
+/* FAQ Page Styles */
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.faq-item {
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 1rem;
+}
+
+.faq-question {
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0.5rem 0;
+}
+
+.faq-answer {
+    display: none;
+    padding: 0.5rem 0;
+    line-height: 1.5;
+    color: #555;
+}
+
+.faq-answer.show {
+    display: block;
+}
+
+/* Adds spacing between each song-sample section */
+.song-sample {
+    margin-bottom: 10px;
+}
+
+/* Adds spacing between each video section on the YouTuber page */
+.video {
+    margin-bottom: 10px;
+}
+
+
+/* Responsive Design */
+
+/* Tablets (portrait and landscape) */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.75rem;
+    }
+
+    nav {
+        gap: 1rem;
+    }
+
+    main {
+        padding: 1.5rem;
+    }
+
+    .pages {
+        max-width: 90%; /* Adjust width to fit smaller screens */
+        padding: 1rem;
+    }
+}
+
+/* Mobile Devices (portrait) */
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .pages {
+        max-width: 95%;
+        padding: 1rem;
+    }
+
+    footer {
+        padding: 0.5rem;
+    }
+}
+
+/* Mobile Devices (landscape) */
+@media (max-width: 640px) and (orientation: landscape) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    nav {
+        gap: 0.75rem;
+    }
+
+    .pages {
+        max-width: 90%;
+    }
+
+    footer {
+        padding: 0.5rem;
+    }
+}
