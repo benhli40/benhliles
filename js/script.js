@@ -1,79 +1,100 @@
-// script.js
+// Collapsible FAQ
+document.querySelectorAll('.faq-question').forEach(button => {
+    button.addEventListener('click', () => {
+        const answer = button.nextElementSibling;
 
-document.addEventListener("DOMContentLoaded", function() {
-    const questions = document.querySelectorAll(".faq-question");
-
-    questions.forEach((question) => {
-        question.addEventListener("click", function() {
-            const answer = this.nextElementSibling;
-
-            // Toggle the display of the answer
-            answer.style.display = answer.style.display === "block" ? "none" : "block";
+        // Close other open answers
+        document.querySelectorAll('.faq-answer').forEach(otherAnswer => {
+            if (otherAnswer !== answer) {
+                otherAnswer.style.display = 'none';
+            }
         });
+
+        // Toggle the answer for the clicked question
+        answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
     });
 });
 
+// Initial Setup: Show default message, hide carousel
+document.addEventListener("DOMContentLoaded", () => {
+    const testimonialList = document.querySelector('#testimonial-list');
+    const defaultMessage = document.querySelector('#default-message');
+    const carousel = document.querySelector('#testimonial-carousel');
 
-// Function to initialize the carousel functionality
-function initializeCarousel() {
-    let currentIndex = 0; // Keeps track of the currently displayed testimonial
-    const testimonials = document.querySelectorAll('.testimonial');
+    // Check if there are any real testimonials (in this case, we'll simulate)
+    const hasTestimonials = false; // Set to true if testimonials are available
 
-    // Function to show the testimonial at the given index
-    function showTestimonial(index) {
-        testimonials.forEach((testimonial, i) => {
-            testimonial.style.display = i === index ? 'flex' : 'none'; // Show only the active testimonial
-        });
+    if (hasTestimonials) {
+        // Hide default message, show carousel, and start rotating
+        defaultMessage.style.display = 'none';
+        carousel.style.display = 'block';
+        startCarousel();
+    } else {
+        // Show default message, hide carousel
+        defaultMessage.style.display = 'block';
+        carousel.style.display = 'none';
     }
-
-    // Show the first testimonial initially
-    showTestimonial(currentIndex);
-
-    // Automatically rotate testimonials every 3 seconds
-    setInterval(() => {
-        currentIndex = (currentIndex + 1) % testimonials.length;
-        showTestimonial(currentIndex);
-    }, 3000); // Adjust the time in milliseconds as needed
-}
-
-// Load testimonials from JSON and inject them into the carousel section
-document.addEventListener("DOMContentLoaded", function() {
-    fetch('testimonials.json') // Fetch testimonials from JSON file
-        .then(response => response.json())
-        .then(data => {
-            const carousel = document.querySelector('.testimonial-carousel');
-            
-            // Loop through each testimonial and create the HTML structure
-            data.forEach((testimonial) => {
-                const testimonialDiv = document.createElement('div');
-                testimonialDiv.classList.add('testimonial');
-                
-                testimonialDiv.innerHTML = `
-                    <div class="testimonial-content">
-                        ${testimonial.photo ? `<img src="${testimonial.photo}" alt="${testimonial.client}'s photo" class="testimonial-photo">` : ''}
-                        <div class="testimonial-text">
-                            <p>${testimonial.comment}</p>
-                            <p><strong>- ${testimonial.client}</strong></p>
-                        </div>
-                    </div>
-                `;
-                
-                // Append each testimonial div to the carousel
-                carousel.appendChild(testimonialDiv);
-            });
-            
-            // Initialize the carousel after testimonials are loaded
-            initializeCarousel();
-        })
-        .catch(error => console.error('Error loading testimonials:', error));
 });
 
-// JavaScript for collapsible mobile menu
-document.addEventListener('DOMContentLoaded', () => {
-    const toggleButton = document.querySelector('.menu-toggle');
-    const navMenu = document.querySelector('.nav-menu');
+// Carousel functionality for placeholder testimonials
+let carouselIndex = 0;
 
-    toggleButton.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
+function startCarousel() {
+    const items = document.querySelectorAll('.carousel-item');
+    setInterval(() => {
+        items.forEach((item, index) => {
+            item.classList.remove('active');
+            if (index === carouselIndex) {
+                item.classList.add('active');
+            }
+        });
+        carouselIndex = (carouselIndex + 1) % items.length;
+    }, 3000);
+}
+
+// Initialize EmailJS (if used)
+(function(){
+    emailjs.init("eSP_6R4oybB6l5hRI");
+})();
+
+function handleFormSubmit() {
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const messageType = document.querySelector('input[name="message_type"]:checked').value;
+    const message = document.getElementById('message').value;
+
+    if (messageType === 'testimonial') {
+        const testimonialList = document.getElementById('testimonial-list');
+        const newTestimonial = document.createElement('div');
+        newTestimonial.classList.add('testimonial-entry');
+        newTestimonial.innerHTML = `<p><strong>${name}:</strong> ${message}</p>`;
+        testimonialList.appendChild(newTestimonial);
+    } else if (messageType === 'comment') {
+        emailjs.send("service_n8gyl7q", "template_ox5e0mh", {
+            name: name,
+            email: email,
+            message: message
+        }).then(
+            function(response) {
+                alert("Thank you for your comment! Your message has been sent.");
+            },
+            function(error) {
+                alert("Oops! There was an error sending your message. Please try again later.");
+            }
+        );
+    }
+
+    document.getElementById('contact-form').reset();
+}
+
+// Smooth scrolling for all anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
     });
 });
