@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/benhliles/static/css/main.1cf931fe.css",
+    "main.js": "/benhliles/static/js/main.eb06e034.js",
+    "static/js/453.195b869a.chunk.js": "/benhliles/static/js/453.195b869a.chunk.js",
+    "index.html": "/benhliles/index.html",
+    "main.1cf931fe.css.map": "/benhliles/static/css/main.1cf931fe.css.map",
+    "main.eb06e034.js.map": "/benhliles/static/js/main.eb06e034.js.map",
+    "453.195b869a.chunk.js.map": "/benhliles/static/js/453.195b869a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1cf931fe.css",
+    "static/js/main.eb06e034.js"
+  ]
+}
